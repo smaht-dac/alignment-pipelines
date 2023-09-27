@@ -1,2 +1,2 @@
-# alignment-pipelines
-components for alignment pipelines
+# Alignment Pipelines
+Components for alignment pipelines.
