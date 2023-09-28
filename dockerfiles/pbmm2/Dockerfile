@@ -9,7 +9,7 @@ LABEL maintainers="Michele Berselli (berselli.michele@gmail.com), Dominika Mazie
 #     General updates & installing necessary Linux components
 #######################################################################
 RUN apt-get update -y && apt-get install -y \
-    locales=2.35-0ubuntu3.1 \
+    locales \
     tabix=1.13+ds-2build1 \
     --no-install-recommends \
     && apt-get clean \
