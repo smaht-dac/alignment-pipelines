@@ -1,0 +1,61 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: pbmm2
+description: Align PacBio generated reads with PacBio minimap2 wrapper pbmm2. |
+             Support input file in native PacBio BAM format, FASTQ, or compressed FASTQ. |
+             Sort the alignment BAM file by coordinates
+
+runner:
+  language: cwl
+  main: pbmm2.cwl
+
+software:
+  - pbmm2@1.13.0
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # Required file arguments
+  input_file_reads:
+    argument_type: file.bam
+
+  genome_reference_fasta:
+    argument_type: file.fa
+
+  # Optional parameter arguments
+  nthreads_alignment:
+    argument_type: parameter.integer
+
+  nthreads_sorting:
+    argument_type: parameter.integer
+
+  memory_sorting:
+    argument_type: parameter.string
+
+  preset:
+    argument_type: parameter.string
+    # Alignment modes of --preset:
+    #     - "SUBREAD"       -k 19 -w 19    -o 5 -O 56 -e 4 -E 1 -A 2 -B 5 -z 400 -Z 50  -r 2000   -g 5000
+    #     - "CCS" or "HIFI" -k 19 -w 19 -u -o 6 -O 26 -e 2 -E 1 -A 1 -B 4 -z 400 -Z 50  -r 2000   -g 5000
+    #     - "ISOSEQ"        -k 15 -w 5  -u -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r 200000 -g 2000 -C 5 -G 200000
+    #     - "UNROLLED"      -k 15 -w 15    -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r 2000   -g 10000
+
+  sample_name:
+    argument_type: parameter.string
+
+  output_file_name:
+    argument_type: parameter.string
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  output_file_bam:
+    argument_type: file.bam
+    secondary_files:
+      - bai

@@ -69,7 +69,7 @@ inputs:
     doc: Sample name. |
          Override the sample name (SM field in RG tag) for all read groups. |
          If not provided, sample names derive from the dataset input |
-         with order of precedence: SM field in input read group, |
+         with order of precedence - SM field in input read group, |
          biosample name, well sample name, <UnnamedSample>
 
   # Files <ref.fa> <in.bam> [out.aligned.bam]
@@ -82,11 +82,11 @@ inputs:
       - .fai
     doc: Genome reference in FASTA format with the corresponding index files
 
-  - id: input_file_bam
+  - id: input_file_reads
     type: File
     inputBinding:
       position: 7
-    doc: Input file in native PacBio BAM format
+    doc: Input file in native PacBio BAM format, FASTQ, or compressed FASTQ
 
   - id: output_file_name
     type: string
