@@ -9,7 +9,7 @@ requirements:
 
 hints:
   - class: DockerRequirement
-    dockerPull: ACCOUNT/:VERSION
+    dockerPull: ACCOUNT/pbmm2:VERSION
 
 baseCommand: [pbmm2, align]
 
