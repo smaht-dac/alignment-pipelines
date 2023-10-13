@@ -13,7 +13,10 @@ hints:
 
 baseCommand: [pbmm2, align]
 
-arguments: [ --sort, --log-level, INFO]
+arguments: [--sort, --strip, --unmapped, --log-level, INFO]
+## Extra Arguments
+#   --strip - remove hifikinetics it there
+#   --unmapped - always keep the unmapped reads
 
 inputs:
   # Options
@@ -104,5 +107,5 @@ outputs:
       - .bai
 
 doc: |
-  Run "pbmm2 align --sort [--num-threads <int>] [--sort-threads <int>] [--sort-memory <str>] [--preset <str>] [--sample <str>] <ref.fa> <in.bam> <out.aligned.bam>". |
+  Run "pbmm2 align --sort --strip --unmapped [--num-threads <int>] [--sort-threads <int>] [--sort-memory <str>] [--preset <str>] [--sample <str>] <ref.fa> <in.bam> <out.aligned.bam>". |
   Sort the output aligned BAM and generate the corresponding index file
