@@ -15,8 +15,8 @@ baseCommand: [pbmm2, align]
 
 arguments: [--sort, --strip, --unmapped, --log-level, INFO]
 ## Extra Arguments
-#   --strip - remove hifikinetics it there
-#   --unmapped - always keep the unmapped reads
+#   --strip - remove hifikinetics if there
+#   --unmapped - keep the unmapped reads
 
 inputs:
   # Options
