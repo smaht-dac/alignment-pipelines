@@ -8,3 +8,5 @@
 name: pbmm2
 version: 1.13.0
 source_url: https://github.com/PacificBiosciences/pbmm2
+category:
+  - Alignment
