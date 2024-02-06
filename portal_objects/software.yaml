@@ -10,3 +10,14 @@ version: 1.13.0
 source_url: https://github.com/PacificBiosciences/pbmm2
 category:
   - Alignment
+
+---
+
+################################################################
+# methylink, 0.6.0
+################################################################
+name: methylink
+version: 0.6.0
+source_url: https://github.com/projectoriented/methylink
+category:
+  - Feature Annotation
