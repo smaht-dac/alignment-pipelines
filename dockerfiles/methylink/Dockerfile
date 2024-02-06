@@ -28,14 +28,31 @@ ENV LC_ALL=en_US.UTF-8
 #######################################################################
 #     Software
 #######################################################################
-# Install methylink
+## Install methylink
 RUN pip install methylink==0.6.0
+
+## Samtools install
+RUN wget https://github.com/samtools/samtools/releases/download/1.17/samtools-1.17.tar.bz2 && \
+    tar -xjf samtools-1.17.tar.bz2 && \
+    rm -rf samtools-1.17.tar.bz2
+
+WORKDIR /usr/local/bin/samtools-1.17
+RUN ./configure && \
+    make
+
+WORKDIR /usr/local/bin/
+RUN ln -s samtools-1.17 samtools
 
 #######################################################################
 #     Scripts
 #######################################################################
-# ImportReadGroups_methylink
+## ImportReadGroups_methylink
 COPY ImportReadGroups_methylink.sh .
 RUN chmod +x ImportReadGroups_methylink.sh
+
+#######################################################################
+#     Update env
+#######################################################################
+ENV PATH=/usr/local/bin/samtools/:$PATH
 
 CMD ["bash"]
