@@ -60,4 +60,4 @@ outputs:
 
 doc: |
   Run methylink to carry over tags for ONT data from unaligned |
-  to target BAM file.
+  to target BAM file
