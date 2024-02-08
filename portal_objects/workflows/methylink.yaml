@@ -1,0 +1,43 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: methylink
+description: Run methylink to carry over tags for ONT data from unaligned |
+             to target BAM file
+
+runner:
+  language: cwl
+  main: methylink.cwl
+
+software:
+  - methylink@0.6.0
+
+category:
+  - Annotation
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # Required file arguments
+  input_file_bam:
+    argument_type: file.bam
+
+  methyl_file_bam:
+    argument_type: file.bam
+
+  # Optional parameter arguments
+  nthreads:
+    argument_type: parameter.integer
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  output_file_bam:
+    argument_type: file.bam
+    secondary_files:
+      - bam_bai

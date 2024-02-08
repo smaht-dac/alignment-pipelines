@@ -1,0 +1,45 @@
+## Workflow information #####################################
+#     General information for the workflow
+#############################################################
+name: ImportReadGroups_methylink
+description: Import read group definitions from input to target BAM file. |
+             Replace SM or SM and LB tags in read group definitions. |
+             Create associated index file. |
+             Input file must be sorted by genomic coordinates
+
+runner:
+  language: cwl
+  main: ImportReadGroups_methylink.cwl
+
+category:
+  - Annotation
+
+## Input information ########################################
+#     Input files and parameters
+#############################################################
+input:
+
+  # Required file arguments
+  input_file_bam:
+    argument_type: file.bam
+
+  target_file_bam:
+    argument_type: file.bam
+
+  sample_name:
+    argument_type: parameter.string
+
+  # Optional parameter arguments
+  library_id:
+    argument_type: parameter.string
+
+## Output information #######################################
+#     Output files and quality controls
+#############################################################
+output:
+
+  # File output
+  output_file_bam:
+    argument_type: file.bam
+    secondary_files:
+      - bam_bai
