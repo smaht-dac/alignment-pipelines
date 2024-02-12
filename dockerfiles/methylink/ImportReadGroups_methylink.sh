@@ -67,8 +67,12 @@ else
     sed -e "s/SM:[^\t]*/SM:${sample_name}/" >> TARGET_HEADER
 fi
 
+# Check SM tag is actually there
+# If not, add the tag
+awk -v sample_name="$sample_name" '/^@RG/ && !/SM:/ {print $0 "\tSM:" sample_name; next} {print}' TARGET_HEADER > TARGET_HEADER_CHECKED
+
 # Re-header
-samtools reheader --no-PG TARGET_HEADER $target_file_bam > ${output_prefix}.bam || exit 1
+samtools reheader --no-PG TARGET_HEADER_CHECKED $target_file_bam > ${output_prefix}.bam || exit 1
 
 # Index
 samtools index -@ $nt ${output_prefix}.bam || exit 1
